@@ -1,0 +1,97 @@
+{
+  "name": "react-multiline-clamp",
+  "version": "1.0.0",
+  "description": "React Multiline text Clamping Component",
+  "main": "build/observer.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest -i --env=jsdom --no-cache --verbose",
+    "test-watch": "jest --watch src/"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "truncate",
+    "multine-truncate",
+    "line-clamping",
+    "multiline-clamping",
+    "ellipsis"
+  ],
+  "author": "Mikel Parra <mikelpmc@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "24.9.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "enzyme": "3.6.0",
+    "enzyme-adapter-react-16": "1.5.0",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "5.15.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "7.12.4",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.1",
+    "prettier": "1.18.2",
+    "prop-types": "^15.7.2",
+    "react-cosmos": "^5.0.0-beta.3",
+    "webpack": "4.40.2",
+    "webpack-cli": "3.3.9",
+    "webpack-dev-server": "3.8.1"
+  },
+  "dependencies": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src/components"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/jest/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/components/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "__fixtures__",
+      "__fixtureWrappers__",
+      "querycomponents",
+      "index.js"
+    ],
+    "setupFiles": [],
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>./config/jest/FileStub.js",
+      "\\.(css|sass)$": "identity-obj-proxy"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  }
+}

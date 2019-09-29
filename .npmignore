@@ -1,0 +1,6 @@
+src
+.babelrc
+.prettierrc
+.eslintrc
+.editorconfig
+webpack.config.js
