@@ -1,8 +1,12 @@
 {
   "name": "react-multiline-clamp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Multiline text Clamping Component",
-  "main": "build/observer.js",
+  "main": "build/clamp.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikelpmc/react-multiline-clamping.git"
+  },
   "scripts": {
     "build": "webpack",
     "test": "jest -i --env=jsdom --no-cache --verbose",
