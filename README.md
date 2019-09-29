@@ -1,4 +1,4 @@
-## React Clamping
+## React Multiline Clamping
 
 React component that uses the css line clamping to truncate given text in specified lines
 
