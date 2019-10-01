@@ -1,6 +1,6 @@
 {
   "name": "react-multiline-clamp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Multiline text Clamping Component",
   "main": "build/clamp.js",
   "repository": {
