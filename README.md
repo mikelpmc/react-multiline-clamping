@@ -1,6 +1,8 @@
 ## React Multiline Clamping
 
-React component that uses the css line clamping to truncate given text in specified lines
+React component that uses the css line clamping to truncate given text in specified lines.
+
+[Codesandbox demo](https://codesandbox.io/embed/react-multiline-clamp-luw4q)
 
 #### Getting started
 
@@ -22,5 +24,7 @@ const MyComponent = () => {
   );
 };
 ```
+
+#### [See browser support](https://caniuse.com/#feat=mdn-css_properties_-webkit-line-clamp)
 
 ##### Author: Mikel Parra <mikelpmc@gmail.com> | <http://github.com/mikelpmc>
