@@ -2,6 +2,15 @@
     "name": "react-multiline-clamp",
     "version": "1.0.5",
     "private": false,
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "author": {
+        "name": "Mikel Parra",
+        "email": "mikelpmc@gmail.com"
+    },
+    "files": [
+        "dist/*"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/mikelpmc/react-multiline-clamping.git"
@@ -15,20 +24,29 @@
         "multiline-clamping",
         "ellipsis"
     ],
-    "author": "Mikel Parra <mikelpmc@gmail.com>",
-    "dependencies": {
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "rollup -c"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/preset-react": "^7.9.4",
+        "@rollup/plugin-commonjs": "^11.0.2",
+        "@rollup/plugin-node-resolve": "^7.1.1",
+        "rollup": "^2.3.4",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-peer-deps-external": "^2.2.2",
+        "rollup-plugin-visualizer": "^4.0.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-scripts": "3.4.1"
     },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
     },
     "eslintConfig": {
         "extends": "react-app"
