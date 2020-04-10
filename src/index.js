@@ -1,3 +1,5 @@
-import Clamp from './clamp';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Example from './Example';
 
-export default Clamp;
+ReactDOM.render(<Example />, document.getElementById('root'));
