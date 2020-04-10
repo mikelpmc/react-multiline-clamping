@@ -1,104 +1,80 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, Fragment } from 'react';
 import isCssEllipsisApplied from './utils/isCssEllipsisApplied';
 import TruncatedElement from './truncatedElement';
 
-class Clamp extends Component {
-  static propTypes = {
-    children: TruncatedElement.propTypes.children,
-    lines: TruncatedElement.propTypes.lines,
-    maxLines: PropTypes.number,
-    withTooltip: PropTypes.bool,
-    withToggle: PropTypes.bool
-  };
+const Clamp = ({
+    children,
+    lines = 3,
+    maxLines = 11,
+    withTooltip = true,
+    withToggle = false,
+    texts = {
+        showMore: 'More',
+        showLess: 'Less'
+    }
+}) => {
+    const [sLines, setLines] = useState(lines);
+    const [showMore, setShowMore] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
-  static defaultProps = {
-    children: TruncatedElement.defaultProps.children,
-    lines: TruncatedElement.defaultProps.lines,
-    maxLines: 11,
-    withTooltip: true,
-    withToggle: false
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      lines: this.props.lines,
-      showMore: false,
-      isExpanded: false
+    const shouldApplyTooltip = elem => {
+        return Boolean(isCssEllipsisApplied(elem) && withTooltip);
     };
-  }
 
-  shouldApplyTooltip = elem => {
-    const { withTooltip } = this.props;
+    const handleShowToggle = () => {
+        if (withToggle) {
+            if (!showMore && !isExpanded) {
+                setShowMore(true);
+            }
+        }
+    };
 
-    return Boolean(isCssEllipsisApplied(elem) && withTooltip);
-  };
+    const handleInitElement = elem => {
+        if (shouldApplyTooltip(elem)) {
+            const title = elem.textContent;
+            elem.setAttribute('title', title);
+        }
 
-  handleSetTitle = elem => {
-    if (this.shouldApplyTooltip(elem)) {
-      const title = elem.textContent;
-      elem.setAttribute('title', title);
+        handleShowToggle();
+    };
 
-      this.handleShowToggle();
-    }
-  };
+    const handleToggleShowMore = show => {
+        const newLines = show ? maxLines : lines;
 
-  handleShowToggle = () => {
-    const { withToggle } = this.props;
+        setShowMore(showMore => !showMore);
+        setIsExpanded(isExpanded => !isExpanded);
+        setLines(newLines);
+    };
 
-    if (withToggle) {
-      const { showMore, isExpanded } = this.state;
-
-      if (!showMore && !isExpanded) {
-        this.setState({
-          showMore: true
-        });
-      }
-    }
-  };
-
-  handleToggleShowMore = show => {
-    const { lines, maxLines } = this.props;
-
-    const newLines = show ? maxLines : lines;
-
-    this.setState(prevState => ({
-      showMore: !prevState.showMore,
-      isExpanded: !prevState.isExpanded,
-      lines: newLines
-    }));
-  };
-
-  handleGetRef = elem => {
-    if (elem) this.handleSetTitle(elem);
-  };
-
-  render() {
-    const { lines, showMore, isExpanded } = this.state;
-    const { children } = this.props;
+    const handleGetRef = elem => {
+        if (elem) handleInitElement(elem);
+    };
 
     return (
-      <Fragment>
-        <TruncatedElement lines={lines} getRef={this.handleGetRef}>
-          {children}
-        </TruncatedElement>
+        <Fragment>
+            <TruncatedElement lines={sLines} getRef={handleGetRef}>
+                {children}
+            </TruncatedElement>
 
-        {showMore && !isExpanded && (
-          <button type="button" onClick={() => this.handleToggleShowMore(true)}>
-            More
-          </button>
-        )}
+            {showMore && !isExpanded && (
+                <button
+                    type="button"
+                    onClick={() => handleToggleShowMore(true)}
+                >
+                    {texts.showMore}
+                </button>
+            )}
 
-        {isExpanded && (
-          <button type="button" onClick={() => this.handleToggleShowMore(false)}>
-            Less
-          </button>
-        )}
-      </Fragment>
+            {isExpanded && (
+                <button
+                    type="button"
+                    onClick={() => handleToggleShowMore(false)}
+                >
+                    {texts.showLess}
+                </button>
+            )}
+        </Fragment>
     );
-  }
-}
+};
 
 export default Clamp;
