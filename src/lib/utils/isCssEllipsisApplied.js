@@ -1,3 +1,3 @@
-const isCssEllipsisApplied = elem => elem.offsetHeight < elem.scrollHeight;
+const isCssEllipsisApplied = elem => elem.offsetWidth < elem.scrollWidth;
 
 export default isCssEllipsisApplied;
