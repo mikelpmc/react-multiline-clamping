@@ -8,7 +8,7 @@ React component that uses the css line clamping to truncate given text in specif
 - 🎉 Uses the css line clamp property
 - 😱 It works both with plain text and HTML/Components
 - 💥 Show more/less behaviour
-- 👂 Listens to text and lines changes and respond accordingly
+- 👂 Listens to text and lines changes and responds accordingly
 - ⚙️ Easy-to-use component API
 
 ## Installation
