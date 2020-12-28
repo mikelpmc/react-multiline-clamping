@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef, useEffect } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import isCssEllipsisApplied from "./utils/isCssEllipsisApplied";
 import TruncatedElement from "./truncatedElement";
 
@@ -11,9 +11,8 @@ const Clamp = ({
     texts = {
         showMore: "More",
         showLess: "Less",
-    }
+    },
 }) => {
-    const element = useRef();
     const [sLines, setLines] = useState(lines);
     const [isExpanded, setIsExpanded] = useState(false);
     const [showMore, setShowMore] = useState(false);
@@ -26,37 +25,33 @@ const Clamp = ({
         setLines(newLines);
     };
 
-    const handleGetRef = (elem) => {
-        if (elem) {
-            element.current = elem;
+    const handleConfigElement = (elem) => {
+        if (!elem) return;
+
+        if (isCssEllipsisApplied(elem)) {
+            if (withTooltip) {
+                const title = elem.textContent;
+                elem.setAttribute("title", title);
+            }
+
+            if (withToggle && !showMore && !isExpanded) {
+                setShowMore(true);
+            }
+        } else {
+            elem.removeAttribute("title");
+            setShowMore(false);
         }
     };
 
     useEffect(() => {
-        const handleConfigElement = () => {
-            const elem = element.current;
-
-            if (isCssEllipsisApplied(elem)) {
-                if (withTooltip) {
-                    const title = elem.textContent;
-                    elem.setAttribute("title", title);
-                }
-
-                if (withToggle && !showMore && !isExpanded) {
-                    setShowMore(true);
-                }
-            } else {
-                elem.removeAttribute("title");
-                setShowMore(false);
-            }
-        };
-
-        element.current && handleConfigElement();
-    }, [isExpanded, showMore, withToggle, withTooltip, children]);
+        if (lines) {
+            setLines(lines);
+        }
+    }, [lines]);
 
     return (
         <Fragment>
-            <TruncatedElement lines={sLines} getRef={handleGetRef}>
+            <TruncatedElement lines={sLines} getRef={handleConfigElement}>
                 {children}
             </TruncatedElement>
 

@@ -8,7 +8,7 @@ const TruncatedElement = ({ children, lines, getRef }) => {
             overflow: "hidden",
             display: "-webkit-box",
             WebkitBoxOrient: "vertical",
-            WebkitLineClamp: lines,
+            WebkitLineClamp: parseInt(lines),
         };
     }, [lines]);
 
