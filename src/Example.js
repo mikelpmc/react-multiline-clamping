@@ -1,41 +1,47 @@
-import React from 'react';
-import Clamp from './lib';
+import React, { useState } from "react";
+import Clamp from "./lib";
+
+const initialText = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Illum perspiciatis ea consequuntur ipsum deleniti placeat
+sit accusamus architecto omnis, ipsam sapiente pariatur
+officia voluptatum dolorem expedita labore eveniet
+voluptatem quasi. Consectetur ducimus cum saepe voluptatum,
+obcaecati rerum assumenda placeat aut accusantium
+dignissimos dolor facere officia delectus corrupti
+perferendis laboriosam deserunt nobis, suscipit autem atque?`;
 
 function Example() {
+    const [text, setText] = useState(initialText);
+    const [lines, setLines] = useState(2);
+
     return (
         <div>
             <h1>Multiline clamp example</h1>
+            <div>
+                <textarea
+                    value={text}
+                    cols={4}
+                    rows={4}
+                    onChange={(ev) => setText(ev.target.value)}
+                    style={{ width: "100%", height: "150px" }}
+                />
+            </div>
+            <div>
+                <input
+                    type="text"
+                    value={lines}
+                    onChange={(ev) => setLines(ev.target.value)}
+                />
+            </div>
 
             <Clamp
-                withToggle
-                texts={{ showMore: 'Moreeee', showLess: 'Menos' }}
-                lines={2}
+                texts={{ showMore: "Moreeee", showLess: "Menos" }}
+                lines={lines}
                 maxLines={8}
-                withTooltip={false}
+                withToggle
+                onShowMore={(show) => console.log(show)}
             >
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Illum perspiciatis ea consequuntur ipsum deleniti placeat
-                    sit accusamus architecto omnis, ipsam sapiente pariatur
-                    officia voluptatum dolorem expedita labore eveniet
-                    voluptatem quasi. Consectetur ducimus cum saepe voluptatum,
-                    obcaecati rerum assumenda placeat aut accusantium
-                    dignissimos dolor facere officia delectus corrupti
-                    perferendis laboriosam deserunt nobis, suscipit autem atque?
-                    Eius minima commodi nostrum illum ut? Aliquam illum quaerat
-                    illo dolorum explicabo voluptates asperiores assumenda
-                    aperiam totam repudiandae, deserunt nisi, quae ea ipsam ut,
-                    ipsa quidem animi unde expedita voluptate? Alias a possimus
-                    rerum soluta. Assumenda. Odio ad dignissimos a repellat qui
-                    reiciendis at quia voluptatum, provident assumenda rem vero
-                    soluta vitae dolor quisquam libero deserunt delectus. Optio
-                    eos veritatis fuga accusamus laborum nisi, magnam ad?
-                    Repudiandae, quaerat mollitia aliquam officia quod, voluptas
-                    asperiores optio quia suscipit illo tempora, accusantium
-                    repellat magnam laborum. Laudantium neque aliquam corporis,
-                    modi, minus aspernatur voluptatem commodi, dolorem at nobis
-                    reprehenderit?
-                </p>
+                <p>{text}</p>
             </Clamp>
         </div>
     );
