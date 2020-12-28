@@ -2,3 +2,4 @@ rollup.*
 .babelrc
 .eslintrc
 stats.html
+.eslintcache
