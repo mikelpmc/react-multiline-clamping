@@ -4,8 +4,8 @@ import TruncatedElement from "./truncatedElement";
 
 const Clamp = ({
     children,
-    lines = 3,
-    maxLines = 11,
+    lines = 2,
+    maxLines = 8,
     withTooltip = true,
     withToggle = false,
     texts = {
