@@ -12,6 +12,7 @@ const Clamp = ({
         showMore: "More",
         showLess: "Less",
     },
+    onShowMore = () => {},
 }) => {
     const [sLines, setLines] = useState(lines);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -23,6 +24,8 @@ const Clamp = ({
         setShowMore((showMore) => !showMore);
         setIsExpanded((isExpanded) => !isExpanded);
         setLines(newLines);
+
+        onShowMore(show);
     };
 
     const handleConfigElement = (elem) => {
