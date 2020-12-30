@@ -10,6 +10,7 @@ React component that uses the css line clamping to truncate given text in specif
 - 💥 Show more/less behaviour
 - 👂 Listens to text and lines changes and responds accordingly
 - ⚙️ Easy-to-use component API
+- 🌳 Tiny size, only 1.4kb
 
 ## Installation
 
