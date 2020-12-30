@@ -7,7 +7,7 @@ React component that uses the css line clamping to truncate given text in specif
 ## Features
 - 🎉 Uses the css line clamp property
 - 😱 It works both with plain text and HTML/Components
-- 💥 Show more/less behaviour
+- 💥 Integrated show more/less behaviour
 - 👂 Listens to text and lines changes and responds accordingly
 - ⚙️ Easy-to-use component API
 - 🌳 Tiny size, only 1.4kb
@@ -50,7 +50,7 @@ const MyComponent = () => {
 
 |     Name    |           Type          |                           Default                           |                                                                   Description                                                                   |
 |:-----------:|:-----------------------:|:-----------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------:|
-|   children  |         Element         |                                                             | The expected element to which the ellipsis would be applied. It could be plain text or any HTML/Component.                                      |
+|   children  |         Element         |                                                             | The expected element to which the ellipsis would be applied. It could be plain text or any HTML/Component                                       |
 |    lines    |          Number         |                              2                              | The number of lines we want the text to be truncated to                                                                                         |
 |   maxLines  |          Number         |                              8                              | The maximum number of lines we want to show after clicking on showMore button                                                                   |
 | withTooltip |         Boolean         |                             true                            | Indicates if we want the text to have a tooltip title                                                                                           |
