@@ -45,7 +45,6 @@ function Example() {
                         menossssss
                     </span>
                 )}
-                texts={{ showMore: 'Moreeee', showLess: 'Menos' }}
                 lines={lines}
                 maxLines={8}
                 withToggle
