@@ -2,14 +2,26 @@ import React, { useState, Fragment, useEffect } from 'react';
 import isCssEllipsisApplied from './utils/isCssEllipsisApplied';
 import TruncatedElement from './truncatedElement';
 
+const defaultShowMoreElement = ({ toggle }) => (
+    <button type="button" onClick={toggle}>
+        More
+    </button>
+);
+
+const defaultShowLessElement = ({ toggle }) => (
+    <button type="button" onClick={toggle}>
+        Less
+    </button>
+);
+
 const Clamp = ({
     children,
     lines = 2,
     maxLines = 8,
     withTooltip = true,
     withToggle = false,
-    showMoreElement,
-    showLessElement,
+    showMoreElement = defaultShowMoreElement,
+    showLessElement = defaultShowLessElement,
     onShowMore = () => {}
 }) => {
     const [sLines, setLines] = useState(lines);
