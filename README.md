@@ -5,12 +5,13 @@ React component that uses the css line clamping to truncate given text in specif
 [Codesandbox demo](https://codesandbox.io/embed/react-multiline-clamp-luw4q)
 
 ## Features
-- 🎉 Uses the css line clamp property
-- 😱 It works both with plain text and HTML/Components
-- 💥 Integrated show more/less behaviour
-- 👂 Listens to text and lines changes and responds accordingly
-- ⚙️ Easy-to-use component API
-- 🌳 Tiny size, only 1.4kb
+
+-   🎉 Uses the css line clamp property
+-   😱 It works both with plain text and HTML/Components
+-   💥 Integrated show more/less behaviour
+-   👂 Listens to text and lines changes and responds accordingly
+-   ⚙️ Easy-to-use component API
+-   🌳 Tiny size, only 1.4kb
 
 ## Installation
 
@@ -18,45 +19,61 @@ React component that uses the css line clamping to truncate given text in specif
 npm install react-multiline-clamp
 ```
 
-#### Basic example
+### Basic example
 
 ```jsx
 import Clamp from 'react-multiline-clamp';
 
 const MyComponent = () => {
-  return (
-    <Clamp withTooltip lines={2}>
-      <p>Multiline text</p>
-    </Clamp>
-  );
+    return (
+        <Clamp withTooltip lines={2}>
+            <p>Multiline text</p>
+        </Clamp>
+    );
 };
 ```
 
-### With show more/less
+### With show more/less behaviour
 
 ```jsx
 import Clamp from 'react-multiline-clamp';
 
 const MyComponent = () => {
-  return (
-    <Clamp withTooltip lines={2} withToggle maxLines={11} >
-      <p>Multiline text</p>
-    </Clamp>
-  );
+    return (
+        <Clamp
+            lines={2}
+            maxLines={6}
+            withToggle
+            showMoreElement={({ toggle }) => (
+                <button type="button" onClick={toggle}>
+                    Show more
+                </button>
+            )}
+            showLessElement={({ toggle }) => (
+                <span type="button" onClick={toggle}>
+                    menossssss
+                </span>
+            )}
+        >
+            <p>Multiline text</p>
+        </Clamp>
+    );
 };
 ```
 
 ## API
 
-|     Name    |           Type          |                           Default                           |                                                                   Description                                                                   |
-|:-----------:|:-----------------------:|:-----------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------:|
-|   children  |         Element         |                                                             | The expected element to which the ellipsis would be applied. It could be plain text or any HTML/Component                                       |
-|    lines    |          Number         |                              2                              | The number of lines we want the text to be truncated to                                                                                         |
-|   maxLines  |          Number         |                              8                              | The maximum number of lines we want to show after clicking on showMore button                                                                   |
-| withTooltip |         Boolean         |                             true                            | Indicates if we want the text to have a tooltip title                                                                                           |
-|  withToggle |         Boolean         |                            false                            | Indicates if we want to have the show more/less buttons                                                                                         |
-|    texts    |          Object         |    texts: {     showMore: 'More',     showLess: 'Less'    } | The texts of the show more/less buttons                                                                                                         |
-|  onShowMore | (isExpanded) => Boolean |                           () => {}                          | A callback function that gets calls every time we click on the show more/less buttons. It returns whether the text is expanded or not (Boolean) |
+|      Name       |          Type           |               Default               |                                                                   Description                                                                   |
+| :-------------: | :---------------------: | :---------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
+|    children     |         Element         |                                     |                    The expected element to which the ellipsis would be applied. It could be plain text or any HTML/Component                    |
+|      lines      |         Number          |                  2                  |                                             The number of lines we want the text to be truncated to                                             |
+|    maxLines     |         Number          |                  8                  |                                  The maximum number of lines we want to show after clicking on showMore button                                  |
+|   withTooltip   |         Boolean         |                true                 |                                              Indicates if we want the text to have a tooltip title                                              |
+|   withToggle    |         Boolean         |                false                |                                             Indicates if we want to have the show more/less actions                                             |
+| showMoreElement |         Element         | <button type="button">More</button> |                                                   Element that triggers the show more action                                                    |
+| showLessElement |         Element         | <button type="button">Less</button> |                                                   Element that triggers the show less action                                                    |
+|   onShowMore    | (isExpanded) => Boolean |              () => {}               | A callback function that gets calls every time we click on the show more/less buttons. It returns whether the text is expanded or not (Boolean) |
+
 #### [See browser support](https://caniuse.com/#feat=mdn-css_properties_-webkit-line-clamp)
 
 ##### Author: Mikel Parra <mikelpmc@gmail.com> | <http://github.com/mikelpmc>
