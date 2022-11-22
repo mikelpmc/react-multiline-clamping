@@ -38,7 +38,7 @@
         "@rollup/plugin-node-resolve": "^7.1.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-scripts": "^4.0.1",
+        "react-scripts": "^5.0.1",
         "rollup": "^2.3.4",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-peer-deps-external": "^2.2.2",
