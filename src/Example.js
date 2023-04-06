@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Clamp from './lib';
+import React, { useState } from "react";
+import Clamp from "./lib";
 
 const initialText = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
 Illum perspiciatis ea consequuntur ipsum deleniti placeat
@@ -13,6 +13,7 @@ perferendis laboriosam deserunt nobis, suscipit autem atque?`;
 function Example() {
     const [text, setText] = useState(initialText);
     const [lines, setLines] = useState(2);
+    const [maxLines, setMaxLines] = useState(undefined);
 
     return (
         <div>
@@ -22,15 +23,24 @@ function Example() {
                     value={text}
                     cols={4}
                     rows={4}
-                    onChange={ev => setText(ev.target.value)}
-                    style={{ width: '100%', height: '150px' }}
+                    onChange={(ev) => setText(ev.target.value)}
+                    style={{ width: "100%", height: "150px" }}
                 />
             </div>
             <div>
+                <label htmlFor="">Visible Lines</label>
                 <input
                     type="text"
                     value={lines}
-                    onChange={ev => setLines(ev.target.value)}
+                    onChange={(ev) => setLines(ev.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="">Max Lines (leave empty by default)</label>
+                <input
+                    type="text"
+                    value={maxLines}
+                    onChange={(ev) => setMaxLines(ev.target.value)}
                 />
             </div>
 
@@ -46,9 +56,9 @@ function Example() {
                     </span>
                 )}
                 lines={lines}
-                maxLines={8}
+                maxLines={maxLines}
                 withToggle
-                onShowMore={show => console.log(show)}
+                onShowMore={(show) => console.log(show)}
             >
                 <p>{text}</p>
             </Clamp>
