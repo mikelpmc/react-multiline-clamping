@@ -2,13 +2,13 @@ import React, { cloneElement, useMemo } from "react";
 
 const Tag = "span";
 
-const TruncatedElement = ({ children, lines, getRef }) => {
+const TruncatedElement = ({ children, lines = undefined, getRef }) => {
     const getStyles = useMemo(() => {
         return {
             overflow: "hidden",
             display: "-webkit-box",
             WebkitBoxOrient: "vertical",
-            WebkitLineClamp: parseInt(lines),
+            ...(lines && { WebkitLineClamp: parseInt(lines) }),
         };
     }, [lines]);
 
